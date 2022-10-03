@@ -22,11 +22,6 @@ public class UserController {
     @GetMapping("/")
     public String users(Model model) {
         List<User> users = service.getAllUsers();
-        //model.addAttribute("users", users);
-        //String response = "Текущие пользователи:<br>";
-        //for(User u: users){
-        //    response += u + "<br>";
-        //}
         model.addAttribute("users", users);
 
         return "index";
@@ -95,8 +90,7 @@ public class UserController {
 
     @PostMapping ("/remove/{id}")
     public String removeUser(
-            @PathVariable("id") long id,
-            Model model
+            @PathVariable("id") long id
     ) {
         User user = service.getUserById(id);
         if (user != null) {
